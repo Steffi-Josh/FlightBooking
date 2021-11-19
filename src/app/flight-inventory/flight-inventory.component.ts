@@ -84,9 +84,16 @@ export class FlightInventoryComponent implements OnInit {
     this.route.navigate(['manageFlight',id])
   }
   deleteFlight(id: number) {
+    this.flightDataService.deleteFlight(id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Deletion of Flight ${id} is successfull!`
+        this.refresh();
+      }
+    )
   }
   addFlight() {
-    this.route.navigate(['manageFlight',-1])
+    this.route.navigate(['manageFlight',-1,this.airlineName])
   }
 
 }

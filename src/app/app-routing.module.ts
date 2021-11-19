@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'discount', component: DiscountComponent },
   { path: 'manageAirline/:id', component: ManageAirlineComponent },
   { path: 'manageFlight/:id', component: ManageFlightComponent },
+  { path: 'manageFlight/:id/:airlineName', component: ManageFlightComponent },
   { path: 'manageDiscount/:id', component: ManageDiscountComponent },
   { path: 'logout', component:LogoutComponent  },
   { path: '**', component:ErrorComponent }

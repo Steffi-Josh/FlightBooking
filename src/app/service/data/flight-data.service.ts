@@ -14,6 +14,10 @@ export class FlightDataService {
     return this.http.get<FlightModel[]>(`${AIRLINE_API_URL}/getAllFlights`)
   }
 
+  deleteFlight(id : number){
+    return this.http.delete(`${AIRLINE_API_URL}/deleteFlight/${id}`)
+  }
+
   retriveFlightByAirlineName( airlineName : string){
    // const nameairline = airlineName
     console.log(airlineName)
@@ -30,8 +34,10 @@ export class FlightDataService {
     return this.http.put<FlightModel>(`${AIRLINE_API_URL}/updateFlightById/${id}`,flight)
   }
 
-  createAirline(airline : FlightModel , airlineName : string){
-    return this.http.post<FlightModel>(`${AIRLINE_API_URL}/inventory/addFlight`,[airline ,airlineName])
+  createFlight(airline : FlightModel , airlineName : string){
+    console.log(airlineName)
+   // let params =  new HttpParams().set('airlineName',airlineName)
+    return this.http.post<FlightModel>(`${AIRLINE_API_URL}/inventory/addFlight/${airlineName}`,airline)
   }
 }
 function paramValue(arg0: string, paramValue: any) {
