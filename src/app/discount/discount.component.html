@@ -1,1 +1,32 @@
-<p>discount works!</p>
+<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div>  -->
+
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>DiscountCode</th>
+          <th>Dicount</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+                <tr *ngFor="let discount of discounts">
+                  <td>{{discount.discountCode}}</td>
+                  <td>{{discount.dicount}}</td>
+                  <td><button (click)="updateDiscount(discount.id)" class="btn btn-success">Update</button></td>
+                  <td><button (click)="deleteDiscount(discount.id)" class="btn btn-warning">Delete</button></td>
+                </tr>
+             
+       
+      </tbody>
+  
+    </table>
+  
+    <div class="row">
+        <button (click)="addDiscount()" class="btn btn-success">Add</button>
+    </div>
+  
+  </div>
+  

@@ -1,1 +1,25 @@
-<p>manage-discount works!</p>
+<H1>Discount</H1>
+
+<div class="container">
+  <!-- <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid Target Date</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter atleast 5 characters in Description</div>
+   -->
+  <form (ngSubmit)="!discountForm.invalid && saveDiscount()" #discountForm="ngForm">
+    <fieldset class="form-group">
+      <label>DiscountCode</label>
+      <input type="text" #airlineName="ngModel" 
+            [(ngModel)]="discount.discountCode" class="form-control" 
+                name="discountCode" required="required" minlength="5">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Dicount</label>
+        <input type="text" #address="ngModel"
+        [(ngModel)]="discount.dicount"
+        class="form-control" name="dicount" required="required" >
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>

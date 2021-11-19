@@ -15,7 +15,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { ManageAirlineComponent } from './manage-airline/manage-airline.component';
 import { ManageFlightComponent } from './manage-flight/manage-flight.component';
 import { ManageDiscountComponent } from './manage-discount/manage-discount.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,ReactiveFormsModule,
     FormsModule,HttpClientModule
   ],
   providers: [],

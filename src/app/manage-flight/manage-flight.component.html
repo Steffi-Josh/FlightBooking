@@ -1,1 +1,56 @@
-<p>manage-flight works!</p>
+<H1>Flight</H1>
+
+<div class="container">
+  <!-- <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid Target Date</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter atleast 5 characters in Description</div>
+   -->
+  <form (ngSubmit)="!flightForm.invalid && saveFlight()" #flightForm="ngForm" >
+    <fieldset class="form-group">
+      <label>FlightNumber</label>
+      <input type="text" #flightNumber="ngModel" 
+            [(ngModel)]="flight.flightNumber" class="form-control" 
+                name="flightNumber" required="required" minlength="5">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>From</label>
+        <input type="text" #from="ngModel"
+        [(ngModel)]="flight.from"
+        class="form-control" name="from" required="required" >
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>To</label>
+        <input type="text" #to="ngModel"
+        [(ngModel)]="flight.to"
+        class="form-control" name="to" required="required" >
+    </fieldset>
+    <fieldset class="form-group">
+        <label>TotalSeats</label>
+        <input type="text" #totalSeats="ngModel"
+        [(ngModel)]="flight.totalSeats"
+        class="form-control" name="totalSeats" required="required" >
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Cost</label>
+        <input type="text" #cost="ngModel"
+        [(ngModel)]="flight.cost"
+        class="form-control" name="cost" required="required" >
+    </fieldset>
+    <fieldset class="form-group">
+        <label>ScheduledDates</label>
+        <input type="text" #scheduledDates="ngModel"
+        [(ngModel)]="flight.scheduledDates"
+        class="form-control" name="scheduledDates" required="required" >
+    </fieldset>
+    <fieldset class="form-group">
+        <label>mealType</label>
+        <input type="text" #mealType="ngModel"
+        [(ngModel)]="flight.mealType"
+        class="form-control" name="mealType" required="required" >
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>
