@@ -1,4 +1,4 @@
-<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div>  -->
+ <div class="alert alert-success" *ngIf='message'>{{message}}</div> 
 <div class="container">
 
         
@@ -9,7 +9,7 @@
             <select formControlName="airlineName" class="form-control" required = true> 
                 <option disabled>Select Airline</option>
                 <option>Choose Airline</option>
-                <option *ngFor="let airline of AirlineList">{{airline}}</option>
+                <option *ngFor="let airline of airlines">{{airline.airlineName}}</option>
             </select>
             
         </div>
@@ -19,7 +19,7 @@
 </div>
 <div></div>
 
-<div class="container">
+<div *ngIf = "submitted" class="container">
     <table class="table">
       <thead>
         <tr>

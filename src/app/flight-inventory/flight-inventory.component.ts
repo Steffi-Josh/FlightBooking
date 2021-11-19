@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FlightModel } from '../models/FlightModel';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { AirlineModel } from '../models/AirlineModel';
+import { AirlineDataService } from '../service/data/airline-data.service';
+import { FlightDataService } from '../service/data/flight-data.service';
 
 @Component({
   selector: 'app-flight-inventory',
@@ -11,30 +13,35 @@ import { AirlineModel } from '../models/AirlineModel';
 })
 export class FlightInventoryComponent implements OnInit {
 
-   flights: FlightModel[] = [];
+  flights: FlightModel[] = [];
   message !: string;
   airlineName !: string;
-
+  submitted = false;
+ // AirlineList: any = [];
+  airlines: AirlineModel[] = [];
   
-  
 
-  constructor( private route : Router ) { 
+  constructor( private route : Router , private airlineDataService : AirlineDataService ,
+       private flightDataService : FlightDataService ,private activatedRoute : ActivatedRoute ) { 
    console.log("Inside Cons")
   }
 
   ngOnInit(): void {
     console.log("Inside Init")
-    this.flights = [
-      new FlightModel(1,'ede','dada','efdeasf',45,56,'fege','gr','Indigo'),
-      new FlightModel(2,'sfggg','dxd','dgddgr',45,56,'rgre','gr','GoAir')
-    ]
-    
+    // this.flights = [
+    //   new FlightModel(1,'ede','dada','efdeasf',45,56,'fege','gr','Indigo'),
+    //   new FlightModel(2,'sfggg','dxd','dgddgr',45,56,'rgre','gr','GoAir')
+    // ]
+     this.airlineDataService.retriveAllAirline().subscribe(
+      response => {
+        console.log(response);
+        this.airlines = response;
+      }
+    )
     
   }
 
-  //dropdoen
-  submitted = false;
-  AirlineList: any = ['Indigo', 'GoAir']
+ 
   
   form = new FormGroup({
     airlineName : new FormControl('', Validators.required)
@@ -49,16 +56,28 @@ export class FlightInventoryComponent implements OnInit {
     this.submitted = true;
     console.log(this.submitted + "Airline Submitted");
     console.log(this.form.value);
-    this.airlineName  = this.form.value;
-    // console.log("Airline Name" + this.airlineName);
-    // if(this.airlineName != null){
-    //   const nameairline = this.airlineName
-    //   console.log(nameairline)
-    //   this.flights = this.flights.filter(function(node) {
-    //     return node.airlineName== nameairline;
-    // });
-    // console.log(this.flights)
-    // }
+   
+    var stringify = JSON.stringify(this.form.value)
+    console.log(stringify + "stringify");
+    let parsed = JSON.parse(stringify);
+   console.log(parsed.airlineName);
+
+   this.airlineName  = parsed.airlineName;
+   console.log(this.airlineName);
+   this.refresh();
+    
+  }
+
+  refresh() {
+    const aisad  = 'sefsgs';
+    console.log("Inside Refresh"+ this.airlineName)
+    console.log("Inside Refresh"+ aisad)
+    this.flightDataService.retriveFlightByAirlineName(this.airlineName).subscribe(
+      response => {
+        console.log(response);
+        this.flights = response;
+      }
+    )
   }
 
   updateFlight(id: number) {
