@@ -1,4 +1,4 @@
-<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div>  -->
+<div class="alert alert-success" *ngIf='message'>{{message}}</div> 
 
 <div class="container">
   <table class="table">
@@ -8,7 +8,7 @@
         <th>Address</th>
         <th>Contact Number</th>
         <th>Update</th>
-        <th>Delete</th>
+        <!-- <th>Delete</th> -->
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
                 <td>{{airline.address}}</td>
                 <td>{{airline.contactNumber}}</td>
                 <td><button (click)="updateAirline(airline.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteAirline(airline.id)" class="btn btn-warning">Delete</button></td>
+                <!-- <td><button (click)="deleteAirline(airline.id)" class="btn btn-warning">Delete</button></td> -->
               </tr>
            
      

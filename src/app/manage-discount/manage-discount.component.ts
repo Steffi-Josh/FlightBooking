@@ -14,11 +14,11 @@ export class ManageDiscountComponent implements OnInit {
   id!: number;
   discount!: DiscountModel;
 
-  constructor(private route : ActivatedRoute , 
+  constructor(private activatedRoute : ActivatedRoute , 
     private router : Router , private discountDataService : DiscountDataService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.activatedRoute.snapshot.params['id'];
     this.discount = new DiscountModel(this.id,'',0);
     if(this.id != -1){
       console.log(this.id)
