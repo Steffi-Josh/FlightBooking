@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
+import { API_URL } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class BasicAuthService {
   constructor(private http: HttpClient) { }
 
   authenticate(username: string,password: string) {
-    return this.http.post<any>('http://localhost:4040/authenticate',{username,password}).pipe(
+    return this.http.post<any>(`${API_URL}/authenticate`,{username,password}).pipe(
      map(
        userData => {
        // sessionStorage.setItem(AUTHENTICATED_USER,username);

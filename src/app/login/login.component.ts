@@ -10,8 +10,8 @@ import { BasicAuthService } from '../service/basic-auth.service';
 export class LoginComponent implements OnInit {
 
   errorMessage  = 'Invalid Credentials';
-  userName  = 'admin';
-  password  = 'admin';
+  userName  = '';
+  password  = '';
   invalidCred: boolean = false;
 
   constructor(private router : Router , private basicAuthService : BasicAuthService) { }
