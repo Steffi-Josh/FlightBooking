@@ -17,6 +17,7 @@ import { ManageFlightComponent } from './manage-flight/manage-flight.component';
 import { ManageDiscountComponent } from './manage-discount/manage-discount.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorJWTAuthService } from './service/http/http-interceptor-jwtauth.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,ReactiveFormsModule,
     FormsModule,HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorJWTAuthService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
