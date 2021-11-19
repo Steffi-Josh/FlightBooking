@@ -1,0 +1,33 @@
+<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div>  -->
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>AirlineName</th>
+        <th>Address</th>
+        <th>Contact Number</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     <!-- for (Todo todo: todos) {   -->
+              <tr *ngFor="let airline of airlines">
+                <td>{{airline.airlineName}}</td>
+                <td>{{airline.address}}</td>
+                <td>{{airline.contactNumber}}</td>
+                <td><button (click)="updateAirline(airline.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteAirline(airline.id)" class="btn btn-warning">Delete</button></td>
+              </tr>
+            <!-- } -->
+     
+    </tbody>
+
+  </table>
+
+  <div class="row">
+      <button (click)="addAirline()" class="btn btn-success">Add</button>
+  </div>
+
+</div>
