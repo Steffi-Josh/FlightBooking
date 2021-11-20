@@ -1,4 +1,5 @@
-<footer class="footer">
+<footer class="footer" *ngIf="router.url !== '/user' && router.url !== '/user/bookFlight'
+&& router.url !== '/user/manageBookings' && router.url !== '/user/bookingHistory' ">
     <div class="container">
         <span class="text-muted">All Rights Reserved 2021 @flightBooking</span>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BasicAuthService } from '../service/basic-auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { BasicAuthService } from '../service/basic-auth.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public basicAuthService : BasicAuthService) { }
+  constructor(public basicAuthService : BasicAuthService,public router: Router) { }
 
   ngOnInit(): void {
   }

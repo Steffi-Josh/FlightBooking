@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'manageFlight/:id/:airlineName', component: ManageFlightComponent ,canActivate : [RouteGuardService] },
   { path: 'manageDiscount/:id', component: ManageDiscountComponent,canActivate : [RouteGuardService]  },
   { path: 'logout', component:LogoutComponent  ,canActivate : [RouteGuardService] },
+  { path: "users", loadChildren: ()=>import("./user/user.module").then(m=>m.UserModule)},
   { path: '**', component:ErrorComponent }
 
 ];
@@ -32,4 +33,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  UserModule: any
+ }
