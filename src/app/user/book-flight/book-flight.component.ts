@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AirlineDataService } from 'src/app/service/data/airline-data.service';
 import { FlightDataService } from 'src/app/service/data/flight-data.service';
+import { AirlineModel } from '../models/AirlineModel';
 import { FlightModel } from '../models/FlightModel';
 import { BookingService } from '../service/booking.service';
 
@@ -15,12 +16,14 @@ import { BookingService } from '../service/booking.service';
 })
 export class BookFlightComponent implements OnInit {
 
-  flights: FlightModel[] = [];
+  flights: any;
+  
   searchForm !: FormGroup;
   from !: string
   to !: string
   departureDate !: Date
   arrivalDate !: Date
+  submitted : boolean = false
 
   constructor(private router: Router, private airlineDataService: AirlineDataService,
     private flightDataService: FlightDataService, private bookingService: BookingService
@@ -45,6 +48,33 @@ export class BookFlightComponent implements OnInit {
     console.log("To Place" + this.to)
     console.log("DepartureDate" + this.departureDate)
     console.log("ArrivalDate" + this.arrivalDate)
+    this.submitted = true
+    this.searchresult();
   }
+
+  onSelect(selectedItem: any) {
+    console.log("Selected item Id: ", selectedItem.id); 
+    console.log("Selected item Id: ", selectedItem.airline.airlineName); 
+    console.log("Selected item Id: ", selectedItem); // You get the Id of the selected item here
+}
+
+bookFlight(id : number , airlineName : string){
+console.log("Inside bookFlight" + id + "" + airlineName)
+this.router.navigate(['users/user/addPassengers',id ,airlineName ])
+}
+
+  searchresult(){
+    this.bookingService.retriveFlightByFromAndTo(this.from,this.to).subscribe(
+      response => {
+        console.log(response);
+        
+        this.flights = response;
+     
+        console.log("Inside search result" + this.flights);
+      }
+    )
+  }
+
+
 
 }

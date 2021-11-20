@@ -1,5 +1,5 @@
-<header *ngIf="router.url !== '/users' && router.url !== '/users/user/bookFlight'
-&& router.url !== '/users/user/manageBookings' && router.url !== '/users/user/bookingHistory' ">
+<header *ngIf=" !router.url.includes('users') && router.url !== '/users' && router.url !== '/users/user/bookFlight'
+&& router.url !== '/users/user/manageBookings' && router.url !== '/users/user/bookingHistory'">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div><a href="https://myanimelist.net/topanime.php" class="navbar-brand">
             UserBooking</a></div>

@@ -42,3 +42,45 @@
 </form>
 
 </div>
+
+<div class="container" *ngIf = "submitted">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>FromLocation</th>
+          <th>ToLocation</th>
+          <th>SceduledDates</th>
+          <th>TotalSeats</th>
+          <th>MealType</th>
+          <th>Cost</th>
+          <th>BookFlight</th>
+          <!-- <th>Delete</th> -->
+        </tr>
+      </thead>
+      <tbody>
+       
+              <tr *ngFor="let flight of flights">
+                  <!-- <th scope="row" >{{flight.id}}</th> -->
+                  <td>{{flight.airline.airlineName}}</td>
+                  <td>{{flight.from}}</td>
+                  <td>{{flight.to}}</td>
+                  <td>{{flight.scheduledDates}}</td>
+                  <td>{{flight.totalSeats}}</td>
+                  <td>{{flight.mealType}}</td>
+                  <td>{{flight.cost}}</td>
+                  <td><button (click)="bookFlight(flight.id,flight.airline.airlineName)" class="btn btn-success">Book Now</button></td>
+                 
+                </tr>
+             
+       
+      </tbody>
+  
+    </table>
+  
+    <!-- <div class="row">
+        <button (click)="addAirline()" class="btn btn-success">Add</button>
+    </div> -->
+  
+  </div>
+  

@@ -1,9 +1,23 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AIRLINE_API_URL } from 'src/app/app.constants';
+import { AirlineModel } from 'src/app/models/AirlineModel';
+import { FlightModel } from '../models/FlightModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+
+  retriveFlightByFromAndTo(from : string , to : string){
+    console.log("Inside BookingService - from" + from)
+    console.log("Inside BookingService - to " + to)
+    let params =  new HttpParams().set('from',from)
+                                  .set('To',to)
+    return this.http.get<FlightModel[]>(`${AIRLINE_API_URL}/fromAndToLocation` ,{params: params})
+  }
+
+
 }

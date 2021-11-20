@@ -9,6 +9,7 @@ import { BookingHistoryComponent } from './booking-history/booking-history.compo
 import { UserComponent } from './user.component';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PassengerComponent } from './passenger/passenger.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     TitlebarComponent,
     ManageBookingsComponent,
     BookingHistoryComponent,
-    UserComponent
+    UserComponent,
+    PassengerComponent
   ],
   imports: [
     CommonModule,

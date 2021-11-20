@@ -1,0 +1,66 @@
+<h3>Passenger Details</h3>
+<div class="container">
+    <form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="handleSearch(searchForm.value)">
+    <div>
+        <div fxLayout.xs="column" fxLayout.gt-xs="row" fxLayoutAlign="center">
+            <div fxFlex.gt-sm="40%">
+                <div fxLayout="column">
+                    <div class="form-group">
+                        <label for="bookerName">Booker Name</label>
+                        <input type="text" class="form-control" id="bookerName" 
+                          placeholder="Enter Name" formControlName="bookerName" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="email">Email-Id</label>
+                        <input type="text" class="form-control" id="email" 
+                          placeholder="Enter Email-Id" formControlName="email" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="seats">Total Seats</label>
+                        <input type="text" class="form-control" id="seats" 
+                          placeholder="Enter number of seats" formControlName="seats" />
+                      </div>
+
+                </div>
+            </div>
+
+            <div fxFlex.gt-sm="40%">
+                <div fxLayout="column">
+                    <div class="form-group">
+                        <label for="passName">Passenger Name</label>
+                        <input type="text" class="form-control" id="passName" 
+                          placeholder="Enter passenger name" formControlName="passName" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="passAge">Passenger Age</label>
+                        <input type="text" class="form-control" id="passAge" 
+                          placeholder="Enter passenger age" formControlName="passAge" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="meal">Meal Type</label>
+                        <input type="text" class="form-control" id="meal" 
+                          placeholder="Enter Meal Type" formControlName="meal" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="text" class="form-control" id="gender" 
+                          placeholder="Enter gender of passenger" formControlName="gender" />
+                      </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>

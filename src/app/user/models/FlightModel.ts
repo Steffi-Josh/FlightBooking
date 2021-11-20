@@ -1,3 +1,5 @@
+import { AirlineModel } from "./AirlineModel";
+
 export class FlightModel {
     constructor(
       public id: number,
@@ -9,6 +11,7 @@ export class FlightModel {
       public scheduledDates: string,
       public mealType: string,
       public airlineName: string,
+      public airlineModel :AirlineModel
     ) {
   
     }
