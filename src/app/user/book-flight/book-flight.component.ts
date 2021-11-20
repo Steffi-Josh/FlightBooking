@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router ,NavigationExtras } from '@angular/router';
 import { AirlineDataService } from 'src/app/service/data/airline-data.service';
 import { FlightDataService } from 'src/app/service/data/flight-data.service';
 import { AirlineModel } from '../models/AirlineModel';
+import { BookingModel } from '../models/bookingModel';
 import { FlightModel } from '../models/FlightModel';
 import { BookingService } from '../service/booking.service';
 
@@ -17,16 +18,15 @@ import { BookingService } from '../service/booking.service';
 export class BookFlightComponent implements OnInit {
 
   flights: any;
-  
   searchForm !: FormGroup;
   from !: string
   to !: string
   departureDate !: Date
   arrivalDate !: Date
   submitted : boolean = false
+  navigatevalues :any
 
-  constructor(private router: Router, private airlineDataService: AirlineDataService,
-    private flightDataService: FlightDataService, private bookingService: BookingService
+  constructor(private router: Router, private bookingService: BookingService
     , private formBuilder: FormBuilder) {
     this.searchForm = this.formBuilder.group({
       from: '',
@@ -51,16 +51,20 @@ export class BookFlightComponent implements OnInit {
     this.submitted = true
     this.searchresult();
   }
+  
 
-  onSelect(selectedItem: any) {
-    console.log("Selected item Id: ", selectedItem.id); 
-    console.log("Selected item Id: ", selectedItem.airline.airlineName); 
-    console.log("Selected item Id: ", selectedItem); // You get the Id of the selected item here
-}
 
 bookFlight(id : number , airlineName : string){
 console.log("Inside bookFlight" + id + "" + airlineName)
-this.router.navigate(['users/user/addPassengers',id ,airlineName ])
+const navigationExtras: NavigationExtras = {
+  state: {
+    departureDate: this.departureDate,
+    arrivalDate: this.arrivalDate,
+    from: this.from,
+    to: this.to
+  }
+};
+this.router.navigate(['users/user/addPassengers',id ,airlineName] ,navigationExtras)
 }
 
   searchresult(){
