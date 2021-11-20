@@ -19,7 +19,7 @@ export class FlightInventoryComponent implements OnInit {
   submitted = false;
  // AirlineList: any = [];
   airlines: AirlineModel[] = [];
-  
+
 
   constructor( private route : Router , private airlineDataService : AirlineDataService ,
        private flightDataService : FlightDataService ,private activatedRoute : ActivatedRoute ) { 
@@ -32,6 +32,7 @@ export class FlightInventoryComponent implements OnInit {
     //   new FlightModel(1,'ede','dada','efdeasf',45,56,'fege','gr','Indigo'),
     //   new FlightModel(2,'sfggg','dxd','dgddgr',45,56,'rgre','gr','GoAir')
     // ]
+   
      this.airlineDataService.retriveAllAirline().subscribe(
       response => {
         console.log(response);

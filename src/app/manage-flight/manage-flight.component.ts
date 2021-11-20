@@ -13,6 +13,10 @@ export class ManageFlightComponent implements OnInit {
   id!: number;
   airlineName!: string;
   flight!: FlightModel;
+  mealtypes: any = ['veg', 'non-veg'] ; 
+  mealType !: string;
+  scheduledDatesList : any = ['Daily','WeekDays','Weekend'];
+  scheduledDates !: string;
 
   constructor(private route : ActivatedRoute , 
     private router : Router ,  private flightDataService : FlightDataService) { }
@@ -30,9 +34,24 @@ export class ManageFlightComponent implements OnInit {
     }
   }
 
+  onChange (event : any){
+    console.log("Inside selectChangeHandler - mealtype " + event.target.value)
+      this.flight.mealType =  event.target.value;
+      console.log("Inside selectChangeHandler " +this.flight.mealType)
+  }
+
+  selectChangeHandler (event : any){
+    console.log("Inside selectChangeHandler - scheduledDates " +  event.target.value)
+    this.flight.scheduledDates = event.target.value;
+    console.log("Inside selectChangeHandler - scheduledDates " + this.flight.scheduledDates)
+}
+
   saveFlight(){
     console.log("Inside save Flight")
     if(this.id == -1){
+     // this.flight.mealType = this.mealType;
+    //  this.flight.scheduledDates = this.scheduledDates;
+      console.log("Create Flight - mealtype" + this.flight.mealType)
       this.flightDataService.createFlight(this.flight, this.airlineName).subscribe(
         data => {
           console.log("Createflight" + data)
@@ -41,6 +60,8 @@ export class ManageFlightComponent implements OnInit {
       )
     }
     else{
+     // this.flight.mealType = this.mealType;
+     // this.flight.scheduledDates = this.scheduledDates;
       this.flightDataService.updateFlight(this.id,this.flight).subscribe(
         data => {
           console.log("Updateflight" + data)

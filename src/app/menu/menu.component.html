@@ -4,14 +4,14 @@
             UserBooking</a></div>
 
             <ul class="navbar-nav">
-                <li><a routerLink="/welcome/admin" class="nav-link">Home</a></li>
-                <li><a  routerLink="/airlineInventory" class="nav-link">ManageAirline</a></li>
-                <li><a  routerLink="/flightInventory" class="nav-link">ManageFlight</a></li>
-                <li><a  routerLink="/discount" class="nav-link">ManageDiscount</a></li>
+                <li><a *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/welcome/admin" class="nav-link">Home</a></li>
+                <li><a *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/airlineInventory" class="nav-link">ManageAirline</a></li>
+                <li><a  *ngIf="basicAuthService.IsUserLoggedIn()" routerLink="/flightInventory" class="nav-link">ManageFlight</a></li>
+                <li><a  *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/discount" class="nav-link">ManageDiscount</a></li>
             </ul>
             <ul class="navbar-nav navbar-collapse justify-content-end">
-                <li><a  routerLink="/login" class="nav-link">Login</a></li>
-                <li><a  routerLink="/logout" class="nav-link">Logout</a></li>
+                <li><a *ngIf="!basicAuthService.IsUserLoggedIn()"  routerLink="/login" class="nav-link">Login</a></li>
+                <li><a  *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/logout" class="nav-link">Logout</a></li>
             </ul>
         </nav>
 </header>

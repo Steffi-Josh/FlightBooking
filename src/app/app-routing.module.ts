@@ -10,19 +10,20 @@ import { LogoutComponent } from './logout/logout.component';
 import { ManageAirlineComponent } from './manage-airline/manage-airline.component';
 import { ManageDiscountComponent } from './manage-discount/manage-discount.component';
 import { ManageFlightComponent } from './manage-flight/manage-flight.component';
+import { RouteGuardService } from './service/route-guard.service';
 
 const routes: Routes = [
   { path: '', component:LoginComponent },
   { path: 'login', component:LoginComponent },
-  { path: 'welcome/:name', component:AdminComponent},
-  { path: 'airlineInventory', component: AirlineInventoryComponent },
-  { path: 'flightInventory', component: FlightInventoryComponent },
-  { path: 'discount', component: DiscountComponent },
-  { path: 'manageAirline/:id', component: ManageAirlineComponent },
-  { path: 'manageFlight/:id', component: ManageFlightComponent },
-  { path: 'manageFlight/:id/:airlineName', component: ManageFlightComponent },
-  { path: 'manageDiscount/:id', component: ManageDiscountComponent },
-  { path: 'logout', component:LogoutComponent  },
+  { path: 'welcome/:name', component:AdminComponent ,canActivate : [RouteGuardService] },
+  { path: 'airlineInventory', component: AirlineInventoryComponent ,canActivate : [RouteGuardService] },
+  { path: 'flightInventory', component: FlightInventoryComponent ,canActivate : [RouteGuardService] },
+  { path: 'discount', component: DiscountComponent ,canActivate : [RouteGuardService] },
+  { path: 'manageAirline/:id', component: ManageAirlineComponent ,canActivate : [RouteGuardService] },
+  { path: 'manageFlight/:id', component: ManageFlightComponent ,canActivate : [RouteGuardService] },
+  { path: 'manageFlight/:id/:airlineName', component: ManageFlightComponent ,canActivate : [RouteGuardService] },
+  { path: 'manageDiscount/:id', component: ManageDiscountComponent,canActivate : [RouteGuardService]  },
+  { path: 'logout', component:LogoutComponent  ,canActivate : [RouteGuardService] },
   { path: '**', component:ErrorComponent }
 
 ];

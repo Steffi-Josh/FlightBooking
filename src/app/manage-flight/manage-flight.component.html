@@ -40,15 +40,32 @@
     </fieldset>
     <fieldset class="form-group">
         <label>ScheduledDates</label>
-        <input type="text" #scheduledDates="ngModel"
+        <!-- <input type="text" #scheduledDates="ngModel"
         [(ngModel)]="flight.scheduledDates"
-        class="form-control" name="scheduledDates" required="required" >
+        class="form-control" name="scheduledDates" required="required" > -->
+        <!-- <select class="form-control" (ngModelchange)="selectChangeHandler($event)" required = true 
+          [ngModel]="flight.scheduledDates" [ngModelOptions]="{standalone: true}"> 
+            <option disabled>Select ScheduledDates</option>
+            <option>Choose ScheduledDates</option>
+            <option [value]="schedule" *ngFor="let schedule of scheduledDatesList">{{schedule}}</option>
+        </select> -->
+        <select class="form-control" (click)="selectChangeHandler($event)" required = true >
+            <option disabled>Select ScheduledDates</option>
+            <option>Choose ScheduledDate</option>
+            <option [value]="schedule" *ngFor="let schedule of scheduledDatesList">{{schedule}}</option>
+        </select>
     </fieldset>
     <fieldset class="form-group">
         <label>mealType</label>
-        <input type="text" #mealType="ngModel"
+        <!-- <input type="text" #mealType="ngModel"
         [(ngModel)]="flight.mealType"
-        class="form-control" name="mealType" required="required" >
+        class="form-control" name="mealType" required="required" > -->
+        <select class="form-control" (click)="onChange($event)" required = true >
+            <option disabled>Select MealType</option>
+            <option>Choose MealType</option>
+            <option [value]="meal" *ngFor="let meal of mealtypes">{{meal}}</option>
+        </select>
+        
     </fieldset>
 
     <button type="submit" class="btn btn-success">Save</button>
