@@ -1,1 +1,47 @@
-<p>manage-bookings works!</p>
+<div class="container">
+    <form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="handleSearch(searchForm.value)">
+      <div>
+        <div class="form-group">
+            <label for="pnrNumber">PNR Number</label>
+            <input type="text" class="form-control" id="pnrNumber" 
+              placeholder="Enter PNR Number" formControlName="pnrNumber" />
+          </div>
+      </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+</form>
+</div>
+
+<div *ngIf = "submitted" class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>bookerEmailId</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Cost</th>
+          <th>Departure Date</th>
+          <th>Arrival Date</th>
+          <th>PassengerName</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+                <tr>
+                  <td>{{bookingDetails.bookerEmailId}}</td>
+                  <td>{{bookingDetails.from}}</td>
+                  <td>{{bookingDetails.to}}</td>
+                  <td>{{bookingDetails.price}}</td>
+                  <td>{{bookingDetails.departureDate}}</td>
+                  <td>{{bookingDetails.returnDate}}</td>
+                  <td *ngFor="let passenger of bookingDetails.passengers"> {{passenger.name}}</td>
+                  <td><button (click)="cancelFlight(bookingDetails.id)" class="btn btn-warning">Delete</button></td>
+                </tr>
+            
+       
+      </tbody>
+  
+    </table>
+  
+  
+  </div>

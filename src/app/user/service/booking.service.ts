@@ -20,11 +20,26 @@ export class BookingService {
     return this.http.get<FlightModel[]>(`${AIRLINE_API_URL}/fromAndToLocation` ,{params: params})
   }
 
+  getBookingDetailsFromPNR(pnr : string){
+    console.log("Inside BookingService - getBookingDetailsFromPNR" + pnr)
+    return this.http.get<BookingModel>(`${BOOKING_API_URL}/searchByPnr/${pnr}`)
+  }
+
   bookFlight(bookingSched : BookingModel){
     console.log(bookingSched)
     console.log("BookingService - bookingSched" + JSON.stringify(bookingSched))
     return this.http.post<BookingModel>(`${BOOKING_API_URL}/bookTicket`,bookingSched)
   }
+
+  getBookingDetailsFromEmailId(emailId : string){
+    console.log("Inside BookingService - getBookingDetailsFromPNR" + emailId)
+    return this.http.get<BookingModel>(`${BOOKING_API_URL}/searchByEmailId/${emailId}`)
+  }
+
+  cancelFlight(id : number){
+    return this.http.delete(`${BOOKING_API_URL}/cancelTicket/${id}`)
+  }
+
 
 
 
