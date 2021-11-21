@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BookingModel } from '../models/bookingModel';
 import { FlightModel } from '../models/FlightModel';
 import { BookingService } from '../service/booking.service';
@@ -16,7 +17,7 @@ export class ManageBookingsComponent implements OnInit {
   submitted = false
   message !: string;
   flights: any;
-  constructor(private formBuilder: FormBuilder , private bookingService : BookingService ) { 
+  constructor(private formBuilder: FormBuilder , private bookingService : BookingService , private router : Router ) { 
 
     this.searchForm = this.formBuilder.group({
       pnrNumber : ''
@@ -44,8 +45,19 @@ export class ManageBookingsComponent implements OnInit {
       response => {
         console.log(response);
         this.message = `Cancellation of Flight ${id} is successfull!`
+       // this.refresh(id)
       }
     )
+  }
+
+  refresh(id : number){
+     
+      let currentUrl = this.router.url;
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate([currentUrl]);
+         
+      
   }
 
 }

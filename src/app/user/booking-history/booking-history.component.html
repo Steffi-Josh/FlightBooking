@@ -1,1 +1,51 @@
-<p>booking-history works!</p>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div> 
+<div class="container">
+    <form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="handleSearch(searchForm.value)">
+      <div>
+        <div class="form-group">
+            <label for="emailid">Email-ID</label>
+            <input type="text" class="form-control" id="emailid" 
+              placeholder="Enter your Emailid" formControlName="emailid" />
+          </div>
+      </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+</form>
+</div>
+
+<div *ngIf = "submitted" class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>bookerEmailId</th>
+          <th>PNR</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Cost</th>
+          <th>Departure Date</th>
+          <th>Arrival Date</th>
+          <th>TotalSeats</th>
+          <th>PassengerName</th>      
+        </tr>
+      </thead>
+      <tbody>
+      
+                <tr *ngFor="let book of bookingDetails">
+                  <td>{{book.bookerEmailId}}</td>
+                  <td>{{book.pnr}}</td>
+                  <td>{{book.from}}</td>
+                  <td>{{book.to}}</td>
+                  <td>{{book.price}}</td>
+                  <td>{{book.departureDate}}</td>
+                  <td>{{book.returnDate}}</td>
+                  <td>{{book.totalSeats}}</td>
+                  <td *ngFor="let passenger of book.passengers"> {{passenger.name}}</td>
+                </tr>
+            
+       
+      </tbody>
+  
+    </table>
+  
+  
+  </div>
+

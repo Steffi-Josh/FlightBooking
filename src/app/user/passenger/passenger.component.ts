@@ -27,6 +27,7 @@ export class PassengerComponent implements OnInit {
   bookingSched !: BookingModel;
   passengers !: PassengerModel
   pnr !: string
+  cost !: number
 
 
   constructor(private formBuilder: FormBuilder , private route: Router , private bookingService : BookingService) {
@@ -36,12 +37,14 @@ export class PassengerComponent implements OnInit {
         departureDate: Date,
         arrivalDate: Date,
         from: string,
-        to: string
+        to: string,
+        cost: number
       };
       this.from = state.from
       this.to = state.to
       this.departureDate = state.departureDate
       this.arrivalDate = state.arrivalDate
+      this.cost = state.cost
 
       console.log("NavigationBar" + this.from)
     }
@@ -65,12 +68,13 @@ export class PassengerComponent implements OnInit {
 
   handleSearch(formValues: any) {
     console.log(formValues)
-    this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, [] );
+    this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, 0,[] );
     this.passengers = new PassengerModel('','','','')
     this.bookingSched.from = this.from;
     this.bookingSched.to = this.to;
     this.bookingSched.departureDate = this.departureDate;
     this.bookingSched.returnDate = this.arrivalDate
+    this.bookingSched.price = this.cost
     this.bookingSched.bookerName  = formValues['bookerName']
     this.bookingSched.bookerEmailId =formValues['email']
     //this.bookingSched.bookerContactNumber =formValues['seats']

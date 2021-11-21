@@ -25,6 +25,7 @@ export class BookFlightComponent implements OnInit {
   arrivalDate !: Date
   submitted : boolean = false
   navigatevalues :any
+  cost !: number
 
   constructor(private router: Router, private bookingService: BookingService
     , private formBuilder: FormBuilder) {
@@ -44,6 +45,7 @@ export class BookFlightComponent implements OnInit {
     this.to = formValues['to']
     this.arrivalDate = formValues['arrivalDate']
     this.departureDate = formValues['departureDate']
+   
     console.log("From Place " + this.from)
     console.log("To Place" + this.to)
     console.log("DepartureDate" + this.departureDate)
@@ -61,7 +63,8 @@ const navigationExtras: NavigationExtras = {
     departureDate: this.departureDate,
     arrivalDate: this.arrivalDate,
     from: this.from,
-    to: this.to
+    to: this.to,
+    cost : this.cost
   }
 };
 this.router.navigate(['users/user/addPassengers',id ,airlineName] ,navigationExtras)
@@ -75,6 +78,7 @@ this.router.navigate(['users/user/addPassengers',id ,airlineName] ,navigationExt
         this.flights = response;
      
         console.log("Inside search result" + this.flights);
+        this.cost = this.flights.cost;
       }
     )
   }

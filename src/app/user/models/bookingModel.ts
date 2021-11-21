@@ -9,6 +9,7 @@ export class BookingModel {
       public bookerEmailId: string,
       public bookerContactNumber: string,
       public totalSeats:number,
+      public price:number,
       public passengers : PassengerModel[]
     ) {
   

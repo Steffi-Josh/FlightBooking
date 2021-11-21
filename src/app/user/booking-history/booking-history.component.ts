@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BookingService } from '../service/booking.service';
 
 @Component({
   selector: 'app-booking-history',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booking-history.component.css']
 })
 export class BookingHistoryComponent implements OnInit {
+  searchForm !: FormGroup;
+  submitted = false
+  message !: string;
+  emailID !: string
+  bookingDetails !: any
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder , private bookingService : BookingService , private router : Router) { 
+    this.searchForm = this.formBuilder.group({
+      emailid : ''
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  handleSearch(formValues: any) {
+    console.log(formValues['emailid'])
+    this.emailID = formValues['emailid']
+    this.bookingService.getBookingDetailsFromEmailId(this.emailID).subscribe(
+      response => {
+        console.log(response);
+        this.bookingDetails = response;
+      }
+    )
+    this.submitted = true;
   }
 
 }

@@ -1,3 +1,4 @@
+<div class="alert alert-success" *ngIf='message'>{{message}}</div> 
 <div class="container">
     <form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="handleSearch(searchForm.value)">
       <div>
