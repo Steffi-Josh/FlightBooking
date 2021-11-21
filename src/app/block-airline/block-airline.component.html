@@ -1,0 +1,55 @@
+<div class="alert alert-success" *ngIf='message'>{{message}}</div> 
+<div class="container">
+
+        
+    <form [formGroup]="form" (ngSubmit)="airlineSubmit()">
+           
+        <div class="form-group">
+            <label for="airlineName">Select the airline to be blocked:</label>
+            <select formControlName="airlineName" class="form-control" required = true> 
+                <option disabled>Select Airline</option>
+                <option>Choose Airline</option>
+                <option *ngFor="let airline of airlines">{{airline.airlineName}}</option>
+            </select>
+            
+        </div>
+       
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
+
+<div *ngIf = "submitted" class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Active</th>
+          <th>FlightNumber</th>
+          <th>From</th>
+          <th>To</th>
+          <th>TotalSeats</th>
+          <th>Cost</th>
+          <th>ScheduledDates</th>
+          <th>mealType</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+                <tr *ngFor="let flight of flights">
+                  <td>{{flight.active}}</td>
+                  <td>{{flight.flightNumber}}</td>
+                  <td>{{flight.from}}</td>
+                  <td>{{flight.to}}</td>
+                  <td>{{flight.totalSeats}}</td>
+                  <td>{{flight.cost}}</td>
+                  <td>{{flight.scheduledDates}}</td>
+                  <td>{{flight.mealType}}</td>
+                </tr>
+            
+       
+      </tbody>
+  
+    </table>
+  
+  </div>
+
+

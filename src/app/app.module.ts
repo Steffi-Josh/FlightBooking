@@ -18,6 +18,7 @@ import { ManageDiscountComponent } from './manage-discount/manage-discount.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorJWTAuthService } from './service/http/http-interceptor-jwtauth.service';
+import { BlockAirlineComponent } from './block-airline/block-airline.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HttpInterceptorJWTAuthService } from './service/http/http-interceptor-j
     DiscountComponent,
     ManageAirlineComponent,
     ManageFlightComponent,
-    ManageDiscountComponent
+    ManageDiscountComponent,
+    BlockAirlineComponent
   ],
   imports: [
     BrowserModule,

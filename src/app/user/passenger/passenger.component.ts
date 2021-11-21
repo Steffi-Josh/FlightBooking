@@ -44,7 +44,8 @@ export class PassengerComponent implements OnInit {
       this.to = state.to
       this.departureDate = state.departureDate
       this.arrivalDate = state.arrivalDate
-      this.cost = state.cost
+      this.cost = state.cost  
+      console.log("NavigationBar" + this.cost)
 
       console.log("NavigationBar" + this.from)
     }

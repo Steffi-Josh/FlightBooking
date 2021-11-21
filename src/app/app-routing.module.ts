@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AirlineInventoryComponent } from './airline-inventory/airline-inventory.component';
+import { BlockAirlineComponent } from './block-airline/block-airline.component';
 import { DiscountComponent } from './discount/discount.component';
 import { ErrorComponent } from './error/error.component';
 import { FlightInventoryComponent } from './flight-inventory/flight-inventory.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'manageFlight/:id', component: ManageFlightComponent ,canActivate : [RouteGuardService] },
   { path: 'manageFlight/:id/:airlineName', component: ManageFlightComponent ,canActivate : [RouteGuardService] },
   { path: 'manageDiscount/:id', component: ManageDiscountComponent,canActivate : [RouteGuardService]  },
+  { path: 'blockAirline', component: BlockAirlineComponent,canActivate : [RouteGuardService]  },
   { path: 'logout', component:LogoutComponent  ,canActivate : [RouteGuardService] },
   { path: "users", loadChildren: ()=>import("./user/user.module").then(m=>m.UserModule)},
   { path: '**', component:ErrorComponent }

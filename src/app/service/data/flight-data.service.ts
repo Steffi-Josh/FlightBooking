@@ -26,6 +26,12 @@ export class FlightDataService {
     //return this.http.get<FlightModel[]>(`${AIRLINE_API_URL}/getFlightByAirlineName/${nameairline}`)
   }
 
+  getBlockedFlights( airlineName : string){
+     console.log(airlineName)
+     //let params =  new HttpParams().set('airlineName',airlineName)
+     return this.http.get<FlightModel[]>(`${AIRLINE_API_URL}/blockFlight/${airlineName}`)
+   }
+
   retriveFlight(id : number){
     return this.http.get<FlightModel>(`${AIRLINE_API_URL}/getFlightByID/${id}`)
   }

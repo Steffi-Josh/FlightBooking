@@ -11,6 +11,7 @@ export class FlightModel {
       public scheduledDates: string,
       public mealType: string,
       public airlineName: string,
+      public active : boolean
     ) {
   
     }

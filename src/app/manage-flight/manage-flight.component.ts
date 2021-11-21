@@ -25,7 +25,7 @@ export class ManageFlightComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.airlineName = this.route.snapshot.params['airlineName'];
     console.log("airlineName " + this.airlineName)
-    this.flight = new FlightModel(this.id,'','','',0,0,'','','');
+    this.flight = new FlightModel(this.id,'','','',0,0,'','','',false);
     if(this.id != -1){
       console.log(this.id)
       this.flightDataService.retriveFlight(this.id).subscribe(

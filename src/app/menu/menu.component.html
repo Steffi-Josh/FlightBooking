@@ -1,7 +1,7 @@
 <header *ngIf=" !router.url.includes('users') && router.url !== '/users' && router.url !== '/users/user/bookFlight'
 && router.url !== '/users/user/manageBookings' && router.url !== '/users/user/bookingHistory'">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div><a href="https://myanimelist.net/topanime.php" class="navbar-brand">
+        <div><a href="http://localhost:4200/users/user" class="navbar-brand">
             UserBooking</a></div>
 
             <ul class="navbar-nav">
@@ -9,6 +9,7 @@
                 <li><a *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/airlineInventory" class="nav-link">ManageAirline</a></li>
                 <li><a  *ngIf="basicAuthService.IsUserLoggedIn()" routerLink="/flightInventory" class="nav-link">ManageFlight</a></li>
                 <li><a  *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/discount" class="nav-link">ManageDiscount</a></li>
+                <li><a  *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/blockAirline" class="nav-link">BlockAirline</a></li>
             </ul>
             <ul class="navbar-nav navbar-collapse justify-content-end">
                 <li><a *ngIf="!basicAuthService.IsUserLoggedIn()"  routerLink="/login" class="nav-link">Login</a></li>

@@ -23,7 +23,7 @@
           <th>Departure Date</th>
           <th>Arrival Date</th>
           <th>PassengerName</th>
-          <th>Delete</th>
+          <th>Cancel Ticket</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +36,7 @@
                   <td>{{bookingDetails.departureDate}}</td>
                   <td>{{bookingDetails.returnDate}}</td>
                   <td *ngFor="let passenger of bookingDetails.passengers"> {{passenger.name}}</td>
-                  <td><button (click)="cancelFlight(bookingDetails.id)" class="btn btn-warning">Delete</button></td>
+                  <td><button (click)="cancelFlight(bookingDetails.id)" class="btn btn-warning">Cancel Ticket</button></td>
                 </tr>
             
        

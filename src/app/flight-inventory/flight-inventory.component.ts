@@ -70,9 +70,7 @@ export class FlightInventoryComponent implements OnInit {
   }
 
   refresh() {
-    const aisad  = 'sefsgs';
     console.log("Inside Refresh"+ this.airlineName)
-    console.log("Inside Refresh"+ aisad)
     this.flightDataService.retriveFlightByAirlineName(this.airlineName).subscribe(
       response => {
         console.log(response);
