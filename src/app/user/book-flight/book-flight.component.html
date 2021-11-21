@@ -47,6 +47,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th>Blocked</th>
           <th>Airline</th>
           <th>FromLocation</th>
           <th>ToLocation</th>
@@ -62,6 +63,15 @@
        
               <tr *ngFor="let flight of flights">
                   <!-- <th scope="row" >{{flight.id}}</th> -->
+                  <td
+                  [ngStyle]="{
+                    color: flight.active
+                      ? 'hsl(348, 100%, 61%)'
+                      : 'hsl(141, 53%, 53%)'
+                  }"
+                >
+                  <b>{{flight.active | pipe }}</b>
+                 </td>
                   <td>{{flight.airline.airlineName}}</td>
                   <td>{{flight.from}}</td>
                   <td>{{flight.to}}</td>
@@ -69,7 +79,7 @@
                   <td>{{flight.totalSeats}}</td>
                   <td>{{flight.mealType}}</td>
                   <td>{{flight.cost}}</td>
-                  <td><button (click)="bookFlight(flight.id,flight.airline.airlineName,flight.cost)" class="btn btn-success">Book Now</button></td>
+                  <td><button [disabled] = flight.active (click)="bookFlight(flight.id,flight.airline.airlineName,flight.cost)" class="btn btn-success">Book Now</button></td>
                  
                 </tr>
              

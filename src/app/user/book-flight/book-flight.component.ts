@@ -1,11 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Pipe, PipeTransform} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router ,NavigationExtras } from '@angular/router';
-import { AirlineDataService } from 'src/app/service/data/airline-data.service';
-import { FlightDataService } from 'src/app/service/data/flight-data.service';
-import { AirlineModel } from '../models/AirlineModel';
-import { BookingModel } from '../models/bookingModel';
-import { FlightModel } from '../models/FlightModel';
 import { BookingService } from '../service/booking.service';
 
 
@@ -15,6 +10,8 @@ import { BookingService } from '../service/booking.service';
   templateUrl: './book-flight.component.html',
   styleUrls: ['./book-flight.component.css']
 })
+
+
 export class BookFlightComponent implements OnInit {
 
   flights: any;
@@ -26,6 +23,10 @@ export class BookFlightComponent implements OnInit {
   submitted : boolean = false
   navigatevalues :any
   flightCost !: number
+  filterargs = {active: false};
+
+ 
+
 
   constructor(private router: Router, private bookingService: BookingService
     , private formBuilder: FormBuilder) {

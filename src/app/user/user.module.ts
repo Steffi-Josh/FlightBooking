@@ -11,6 +11,7 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PassengerComponent } from './passenger/passenger.component';
 import { BookingDoneComponent } from './booking-done/booking-done.component';
+import { PipePipe } from './pipe.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BookingDoneComponent } from './booking-done/booking-done.component';
     BookingHistoryComponent,
     UserComponent,
     PassengerComponent,
-    BookingDoneComponent
+    BookingDoneComponent,
+    PipePipe
   ],
   imports: [
     CommonModule,
