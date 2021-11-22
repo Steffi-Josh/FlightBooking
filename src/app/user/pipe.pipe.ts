@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PipePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    return value ? "Yes" : "No";
+    return value ? "No" : "Yes";
   }
 
 //   transform(items: Array<any>, active: boolean): Array<any> {
