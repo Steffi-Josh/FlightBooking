@@ -11,8 +11,12 @@
         <button class="btn btn-primary" type="submit">Search</button>
 </form>
 </div>
-
-<div *ngIf = "submitted" class="container">
+<br/><br/> 
+<div *ngIf = "submitted" class="container"  id="pdfTable" #pdfTable>
+  <div  class="container">
+    <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">  
+    <br/><br/> 
+  </div>
     <table class="table">
       <thead>
         <tr>
