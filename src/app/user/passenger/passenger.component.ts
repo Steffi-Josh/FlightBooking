@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { BookingModel, PassengerModel } from '../models/bookingModel';
 import { BookingService } from '../service/booking.service';
 
@@ -88,20 +88,40 @@ export class PassengerComponent implements OnInit {
     this.bookingSched.passengers.push(this.passengers)
     this.submitted = true;
     console.log(" Booking List " + this.bookingSched)
-    this.bookingService.bookFlight(this.bookingSched).subscribe(
-      data => {
-        console.log("bookFlight" + data.pnr)
-        this.pnr  = data.pnr;
-        this.route.navigate(['users/user/bookingsuccessful',this.pnr])
-      }
-    )
+
+    this.payment()
+   
+
+
+    // this.bookingService.bookFlight(this.bookingSched).subscribe(
+    //   data => {
+    //     console.log("bookFlight" + data.pnr)
+    //     this.pnr  = data.pnr;
+    //     this.route.navigate(['users/user/bookingsuccessful',this.pnr])
+    //     this.payment()
+    //   }
+    // )
     //this.pnrGenerated();
   }
-  pnrGenerated() {
-    if (this.submitted) {
-      this.route.navigate(['users/user/bookingsuccessful'])
-    }
+
+  payment(){
+    
+    const navigationExtras: NavigationExtras = {
+      state: {
+        bookingSched: this.bookingSched,
+       
+      }
+    };
+    this.route.navigate(['users/user/paymentsuccessful',this.cost],navigationExtras)
+   // this.route.navigate(['users/user/bookingsuccessful'],navigationExtras)
   }
+
+
+  // pnrGenerated() {
+  //   if (this.submitted) {
+  //     this.route.navigate(['users/user/bookingsuccessful'])
+  //   }
+  // }
 
 
 }

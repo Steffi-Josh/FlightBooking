@@ -1,0 +1,29 @@
+<h3>Payment Details</h3>
+<div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
+        <div class="form-group">
+            <label for="costId">Amount To Pay : </label>
+            {{cost}}
+        </div>
+
+        <div class="form-group">
+            <label for="discountId">Discount Coupen Code : </label>
+            <select formControlName="discountId" (click)="onChange($event)" class="form-control" required = true> 
+                <option disabled>Select Discount Coupen Code</option>
+                <option>Choose Code</option>
+                <option [value]="discount.dicount" *ngFor="let discount of discounts">{{discount.discountCode}}</option>
+
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="finalCostId">Amount To Pay after applying coupen : </label>
+            {{finalCost}}
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+

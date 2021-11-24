@@ -18,12 +18,15 @@ export class ManageBookingsComponent implements OnInit {
   bookingDetails !: any
   pnr !: string
   submitted = false
+  recordNotfound = false
   message !: string;
+  noRecord !: string;
   flights: any;
   constructor(private formBuilder: FormBuilder , private bookingService : BookingService , private router : Router ) { 
 
     this.searchForm = this.formBuilder.group({
       pnrNumber : ''
+      
     });
   }
 
@@ -38,9 +41,18 @@ export class ManageBookingsComponent implements OnInit {
       response => {
         console.log(response);
         this.bookingDetails = response;
-      }
+        this.submitted = true;
+        this.noRecord = ''
+      },
+      err =>{
+        console.log('No Result Found', err)
+        
+        this.noRecord = `No Record Found for PNR no ${this.pnr} `
+        console.log('No Result Found', this.noRecord)
+        this.submitted = false;
+      } 
     )
-    this.submitted = true;
+   
   }
 
   cancelFlight(id: number) {
@@ -48,7 +60,7 @@ export class ManageBookingsComponent implements OnInit {
       response => {
         console.log(response);
         this.message = `Cancellation of Flight ${id} is successfull!`
-       // this.refresh(id)
+       this.refresh(id)
       }
     )
   }
@@ -59,6 +71,7 @@ export class ManageBookingsComponent implements OnInit {
           this.router.routeReuseStrategy.shouldReuseRoute = () => false;
           this.router.onSameUrlNavigation = 'reload';
           this.router.navigate([currentUrl]);
+          this.message = `Cancellation of Flight ${id} is successfull!`
          
       
   }

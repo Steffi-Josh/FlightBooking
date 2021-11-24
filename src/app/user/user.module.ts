@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PassengerComponent } from './passenger/passenger.component';
 import { BookingDoneComponent } from './booking-done/booking-done.component';
 import { PipePipe } from './pipe.pipe';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PipePipe } from './pipe.pipe';
     UserComponent,
     PassengerComponent,
     BookingDoneComponent,
-    PipePipe
+    PipePipe,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

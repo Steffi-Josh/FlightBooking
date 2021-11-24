@@ -1,4 +1,5 @@
 <div class="alert alert-success" *ngIf='message'>{{message}}</div> 
+<div class="alert alert-warning" *ngIf='noRecord'>{{noRecord}}</div> 
 <div class="container">
     <form [formGroup]="searchForm" autocomplete="off" novalidate (ngSubmit)="handleSearch(searchForm.value)">
       <div>
@@ -20,6 +21,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th>PNR</th>
           <th>bookerEmailId</th>
           <th>From</th>
           <th>To</th>
@@ -33,6 +35,7 @@
       <tbody>
       
                 <tr>
+                  <td>{{bookingDetails.pnr}}</td>
                   <td>{{bookingDetails.bookerEmailId}}</td>
                   <td>{{bookingDetails.from}}</td>
                   <td>{{bookingDetails.to}}</td>
