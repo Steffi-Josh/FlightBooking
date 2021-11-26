@@ -1,8 +1,10 @@
 <header *ngIf=" !router.url.includes('users') && router.url !== '/users' && router.url !== '/users/user/bookFlight'
 && router.url !== '/users/user/manageBookings' && router.url !== '/users/user/bookingHistory'">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div><a href="http://localhost:4200/users/user" class="navbar-brand">
-            UserBooking</a></div>
+        <!-- <div><a href="http://ec2-3-131-100-69.us-east-2.compute.amazonaws.com/users/user" class="navbar-brand">
+            UserBooking</a></div> -->
+            <div><a routerLink="/users/user" class="nav-link">
+                UserBooking</a></div>
 
             <ul class="navbar-nav">
                 <li><a *ngIf="basicAuthService.IsUserLoggedIn()"  routerLink="/welcome/admin" class="nav-link">Home</a></li>

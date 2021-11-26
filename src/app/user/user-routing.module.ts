@@ -14,6 +14,7 @@ const routes: Routes = [
     path: "user", component: UserComponent,
     children: [
       { path: '', component:TitlebarComponent},
+      { path: 'home', component:TitlebarComponent},
       { path: 'bookFlight', component:BookFlightComponent },
       { path: 'manageBookings', component:ManageBookingsComponent },
       { path: 'bookingHistory', component:BookingHistoryComponent } , 
