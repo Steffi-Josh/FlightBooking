@@ -12,6 +12,7 @@ import { BookingService } from '../service/booking.service';
 export class PassengerComponent implements OnInit {
 
   searchForm !: FormGroup;
+  passengerForm !: FormGroup;
   submitted = false;
   bookerName !: string
   email !: string
@@ -25,6 +26,7 @@ export class PassengerComponent implements OnInit {
   departureDate !: Date
   arrivalDate !: Date
   bookingSched !: BookingModel;
+  passengersList !: PassengerModel[]
   passengers !: PassengerModel
   pnr !: string
   cost !: number
@@ -50,8 +52,9 @@ export class PassengerComponent implements OnInit {
       console.log("NavigationBar" + this.from)
     }
     
-   
-    this.searchForm = this.formBuilder.group({
+     
+
+     this.searchForm = this.formBuilder.group({
       bookerName: '',
       email: '',
       seats: 0,
@@ -62,15 +65,69 @@ export class PassengerComponent implements OnInit {
 
 
     });
+   //new code
+    this.passengerForm = this.formBuilder.group({
+      passName: '',
+      passAge: '',
+      meal: '',
+      gender: ''
+
+
+    });
+
   }
+ 
+
+
 
   ngOnInit(): void {
   }
 
+  // handleSearch(formValues: any) {
+  //   console.log(formValues)
+  //   this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, 0,[] );
+  //   this.passengers = new PassengerModel('','','','')
+  //   this.bookingSched.from = this.from;
+  //   this.bookingSched.to = this.to;
+  //   this.bookingSched.departureDate = this.departureDate;
+  //   this.bookingSched.returnDate = this.arrivalDate
+  //   this.bookingSched.price = this.cost
+  //   this.bookingSched.bookerName  = formValues['bookerName']
+  //   this.bookingSched.bookerEmailId =formValues['email']
+  //   //this.bookingSched.bookerContactNumber =formValues['seats']
+  //   this.bookingSched.totalSeats =formValues['seats']
+  //   this.passengers.age = formValues['passAge']
+  //   this.passengers.gender = formValues['gender']
+  //   this.passengers.meal = formValues['meal']
+  //   this.passengers.name = formValues['passName']
+  //   console.log(" Booking List " + this.passengers)
+  //   this.bookingSched.passengers.push(this.passengers)
+  //   this.submitted = true;
+  //   console.log(" Booking List " + this.bookingSched)
+
+  //   this.payment()
+   
+  // }
+
+
+  // payment(){
+    
+  //   const navigationExtras: NavigationExtras = {
+  //     state: {
+  //       bookingSched: this.bookingSched,
+       
+  //     }
+  //   };
+  //   this.route.navigate(['users/user/paymentsuccessful',this.cost],navigationExtras)
+
+  // }
+
+  // New code
+
   handleSearch(formValues: any) {
     console.log(formValues)
     this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, 0,[] );
-    this.passengers = new PassengerModel('','','','')
+    this.passengersList = [];
     this.bookingSched.from = this.from;
     this.bookingSched.to = this.to;
     this.bookingSched.departureDate = this.departureDate;
@@ -80,28 +137,37 @@ export class PassengerComponent implements OnInit {
     this.bookingSched.bookerEmailId =formValues['email']
     //this.bookingSched.bookerContactNumber =formValues['seats']
     this.bookingSched.totalSeats =formValues['seats']
+    
+    this.submitted = true;
+    console.log(" Booking List " + this.bookingSched)
+   
+  }
+
+
+  
+
+  passengerSubmit(formValues: any) {
+    console.log(formValues)
+    this.passengers = new PassengerModel('','','','')
+
     this.passengers.age = formValues['passAge']
     this.passengers.gender = formValues['gender']
     this.passengers.meal = formValues['meal']
     this.passengers.name = formValues['passName']
+
     console.log(" Booking List " + this.passengers)
-    this.bookingSched.passengers.push(this.passengers)
-    this.submitted = true;
-    console.log(" Booking List " + this.bookingSched)
+    this.passengersList.push(this.passengers)
+    this.bookingSched.passengers = this.passengersList
+    console.log("passengerSubmit" + this.bookingSched)
+   // this.payment()
+   this.passengerForm = this.formBuilder.group({
+    passName: '',
+    passAge: '',
+    meal: '',
+    gender: ''
 
-    this.payment()
-   
 
-
-    // this.bookingService.bookFlight(this.bookingSched).subscribe(
-    //   data => {
-    //     console.log("bookFlight" + data.pnr)
-    //     this.pnr  = data.pnr;
-    //     this.route.navigate(['users/user/bookingsuccessful',this.pnr])
-    //     this.payment()
-    //   }
-    // )
-    //this.pnrGenerated();
+  });
   }
 
   payment(){
@@ -113,15 +179,10 @@ export class PassengerComponent implements OnInit {
       }
     };
     this.route.navigate(['users/user/paymentsuccessful',this.cost],navigationExtras)
-   // this.route.navigate(['users/user/bookingsuccessful'],navigationExtras)
+
   }
 
-
-  // pnrGenerated() {
-  //   if (this.submitted) {
-  //     this.route.navigate(['users/user/bookingsuccessful'])
-  //   }
-  // }
+  
 
 
 }
