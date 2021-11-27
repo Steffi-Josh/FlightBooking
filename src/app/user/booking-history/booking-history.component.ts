@@ -24,6 +24,10 @@ export class BookingHistoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onNavToOrderDetails(passDetails : any){
+    this.router.navigate(['/users/user/passengerDetails'], { state: {data: passDetails} });
+  }
+
   handleSearch(formValues: any) {
     console.log(formValues['emailid'])
     this.emailID = formValues['emailid']

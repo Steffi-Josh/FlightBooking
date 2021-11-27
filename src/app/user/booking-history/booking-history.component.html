@@ -38,7 +38,8 @@
                   <td>{{book.departureDate}}</td>
                   <td>{{book.returnDate}}</td>
                   <td>{{book.totalSeats}}</td>
-                  <td *ngFor="let passenger of book.passengers"> {{passenger.name}}</td>
+                  <!-- <td *ngFor="let passenger of book.passengers"> {{passenger.name}}</td> -->
+                  <td><a (click)="onNavToOrderDetails(book.passengers)" style="color: dodgerblue" class="nav-link">Passenger Details</a></td>
                 </tr>
             
        
