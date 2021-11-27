@@ -1,0 +1,27 @@
+<h3>Passenger Details</h3>
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Meal</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let pass of passengerDetails">
+            <td>{{pass.name}}</td>
+            <td>{{pass.age}}</td>
+            <td>{{pass.meal}}</td>
+            <td>{{pass.gender}}</td>
+        </tr>
+
+
+    </tbody>
+
+</table>
+
+
+</div>

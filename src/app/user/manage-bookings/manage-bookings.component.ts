@@ -33,6 +33,10 @@ export class ManageBookingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onNavToOrderDetails(passDetails : any){
+    this.router.navigate(['/users/user/passengerDetails'], { state: {data: passDetails} });
+  }
+
   handleSearch(formValues: any) {
     console.log(formValues['pnrNumber'])
     //getAllPNRFromService

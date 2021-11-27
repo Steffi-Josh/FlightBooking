@@ -13,6 +13,7 @@ import { PassengerComponent } from './passenger/passenger.component';
 import { BookingDoneComponent } from './booking-done/booking-done.component';
 import { PipePipe } from './pipe.pipe';
 import { PaymentComponent } from './payment/payment.component';
+import { PassengerDetailsComponent } from './passenger-details/passenger-details.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PaymentComponent } from './payment/payment.component';
     PassengerComponent,
     BookingDoneComponent,
     PipePipe,
-    PaymentComponent
+    PaymentComponent,
+    PassengerDetailsComponent
   ],
   imports: [
     CommonModule,

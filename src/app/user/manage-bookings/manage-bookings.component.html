@@ -42,7 +42,8 @@
                   <td>{{bookingDetails.price}}</td>
                   <td>{{bookingDetails.departureDate}}</td>
                   <td>{{bookingDetails.returnDate}}</td>
-                  <td *ngFor="let passenger of bookingDetails.passengers"> {{passenger.name}}</td>
+                  <!-- <td *ngFor="let passenger of bookingDetails.passengers"> {{passenger.name}}</td> -->
+                  <td><a (click)="onNavToOrderDetails(bookingDetails.passengers)" style="color: dodgerblue" class="nav-link">Passenger Details</a></td>
                   <td><button (click)="cancelFlight(bookingDetails.id)" class="btn btn-warning">Cancel Ticket</button></td>
                 </tr>
             
