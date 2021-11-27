@@ -30,6 +30,7 @@
           <th>Cost</th>
           <th>ScheduledDates</th>
           <th>mealType</th>
+          <th>Unblock</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +44,7 @@
                   <td>{{flight.cost}}</td>
                   <td>{{flight.scheduledDates}}</td>
                   <td>{{flight.mealType}}</td>
+                  <td><button (click)="unblockFlight(flight.id)"  [disabled] = !flight.active  class="btn btn-success">Unblock</button></td>
                 </tr>
             
        

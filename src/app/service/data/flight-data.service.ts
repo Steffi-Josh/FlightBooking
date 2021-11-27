@@ -36,6 +36,10 @@ export class FlightDataService {
     return this.http.get<FlightModel>(`${AIRLINE_API_URL}/getFlightByID/${id}`)
   }
 
+  unblockFlight(id : number){
+    return this.http.get<FlightModel>(`${AIRLINE_API_URL}/unblockFlight/${id}`)
+  }
+
   updateFlight(id : number , flight : FlightModel){
     return this.http.put<FlightModel>(`${AIRLINE_API_URL}/updateFlightById/${id}`,flight)
   }

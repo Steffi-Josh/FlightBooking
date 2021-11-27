@@ -18,6 +18,8 @@ export class BlockAirlineComponent implements OnInit {
   airlineName !: string;
   flights: FlightModel[] = [];
   message !: string;
+  unblock = false;
+  active !: any
 
   
   constructor(private route : Router , private airlineDataService : AirlineDataService ,
@@ -49,8 +51,32 @@ export class BlockAirlineComponent implements OnInit {
    this.airlineName  = parsed.airlineName;
    console.log(this.airlineName);
    this.getBlockedFlights();
+   //this.unblock = false
     
   }
+
+  unblockFlight(flightId : number){
+    this.flightDataService.unblockFlight(flightId).subscribe(
+      data => {
+        console.log("Updateflight" + data)
+        console.log(data)
+        console.log(data.active)
+        this.active  = data.active
+      //  this.unblock = true
+      this.refreshPage()
+      }
+    )
+  }
+
+  refreshPage(){
+    this.flightDataService.retriveFlightByAirlineName(this.airlineName).subscribe(
+      response => {
+        console.log(response);
+        this.flights = response;
+      
+      }
+    )
+} 
 
   getBlockedFlights(){
     console.log("Inside Refresh"+ this.airlineName)
@@ -58,6 +84,7 @@ export class BlockAirlineComponent implements OnInit {
       response => {
         console.log(response);
         this.flights = response;
+        this.active  = true
       }
     )
   }
