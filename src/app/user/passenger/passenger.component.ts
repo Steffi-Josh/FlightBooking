@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { BookingModel, PassengerModel } from '../models/bookingModel';
 import { BookingService } from '../service/booking.service';
 
@@ -30,9 +30,11 @@ export class PassengerComponent implements OnInit {
   passengers !: PassengerModel
   pnr !: string
   cost !: number
+  flightID !: number
 
 
-  constructor(private formBuilder: FormBuilder , private route: Router , private bookingService : BookingService) {
+  constructor(private formBuilder: FormBuilder , private activatedRoute : ActivatedRoute, 
+     private route: Router , private bookingService : BookingService) {
     const navigation = this.route.getCurrentNavigation();
     if(navigation !=null){
       const state = navigation.extras.state as {
@@ -81,6 +83,7 @@ export class PassengerComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.flightID = this.activatedRoute.snapshot.params['id']
   }
 
   // handleSearch(formValues: any) {
@@ -126,13 +129,14 @@ export class PassengerComponent implements OnInit {
 
   handleSearch(formValues: any) {
     console.log(formValues)
-    this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, 0,[] );
+    this.bookingSched = new BookingModel('','','',new Date(), new Date() ,'','','',0, 0,0,[] );
     this.passengersList = [];
     this.bookingSched.from = this.from;
     this.bookingSched.to = this.to;
     this.bookingSched.departureDate = this.departureDate;
     this.bookingSched.returnDate = this.arrivalDate
     this.bookingSched.price = this.cost
+    this.bookingSched.flightId = this.flightID
     this.bookingSched.bookerName  = formValues['bookerName']
     this.bookingSched.bookerEmailId =formValues['email']
     //this.bookingSched.bookerContactNumber =formValues['seats']
