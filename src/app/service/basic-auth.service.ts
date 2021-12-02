@@ -29,7 +29,8 @@ export class BasicAuthService {
   IsUserLoggedIn(){
     let user =  sessionStorage.getItem('username')
    // console.log("BasicAuthService - IsUserLoggedIn - user Is looged In")
-    return (!(user === null));
+    //return (!(user === null));
+    return !!user;
  
    }
  
